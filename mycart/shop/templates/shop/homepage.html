@@ -1,0 +1,69 @@
+<!doctype html>
+{% load static %}
+
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>{% block title%} {% endblock %}</title>
+     <style>
+       {% block css %} {% endblock %}
+  </style>
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/shop"><h1>My Cart</h1></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href=""><h2>Home</h2><span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+
+
+        <a class="nav-link" href="/shop/loginuser">
+          <button type="button"  style="margin-left:-3px; margin-bottom:5px; font-size: 18px;" class="btn btn-danger my-2 my-sm-0">Login</button>
+         </a>
+
+
+  </div>
+</nav>
+    <div class="container-fluid" style="position:relative;height:900px;background-size:cover;background-image:url({%static 'shop/A.jpg'%})">
+
+    <div class="container" style="width: 500px;position:relative; background-image:url({%static 'shop/signup.jpg'%});height:350px; padding:30px">
+        <h1 style="text-align: center; color:black">Sign Up!</h1>
+
+        <form method="post" action="/shop/signupuser/">
+            {%csrf_token%}
+            <input class="form-control" placeholder="username" type="text" name="username" style="margin-bottom: 10px">
+            <input class="form-control" placeholder="password" type="password" name="password" style="margin-bottom: 10px">
+            <input class= "form-control" placeholder="phoneno" type="text" name="phoneno" maxlength="10" title="Enter 10 digit number" style="margin-bottom: 10px"pattern="[1-9]{1}[0-9]{9}">
+            <input style="display: block; margin: auto;margin-top:30px" class= "btn btn-success" type="submit" name="">
+        </form>
+    </div>
+    </div>
+  {% block body %}
+    {% endblock %}
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    {% block js %} {% endblock %}
+  </body>
+</html>
